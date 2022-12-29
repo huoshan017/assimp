@@ -5,8 +5,10 @@ package assimp
 //#include <string.h>
 import "C"
 
-import "unsafe"
-import "reflect"
+import (
+	"reflect"
+	"unsafe"
+)
 
 const (
 	MaxFaceIndices           = C.AI_MAX_FACE_INDICES
@@ -25,6 +27,10 @@ func (f *Face) NumIndices() uint32 {
 
 func (f *Face) IndicesPtr() *uint32 {
 	return (*uint32)(f.mIndices)
+}
+
+func (f *Face) Index(i int) uint32 {
+	return f.mIndices[i]
 }
 
 func (f *Face) CopyIndices() []uint32 {
