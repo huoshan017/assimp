@@ -225,13 +225,13 @@ func (m *Material) GetMaterialProperty(key MatKey, typ TextureType, textureIndex
 
 func (m *Material) GetMaterialFloatArray(key MatKey, typ TextureType, textureIndex int, pOut []float32) Return {
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&pOut))
-	ret := C.aiGetMaterialFloatArray((*C.struct_aiMaterial)(m), key.constString(), C.uint(typ), C.uint(textureIndex), (*C.ai_real)(&pOut[0]), (*C.uint)(unsafe.Pointer((&header.Len))))
+	ret := C.aiGetMaterialFloatArray((*C.struct_aiMaterial)(m), key.constString(), C.uint(typ), C.uint(textureIndex), (*C.float)(&pOut[0]), (*C.uint)(unsafe.Pointer((&header.Len))))
 	return Return(ret)
 }
 
 func (m *Material) GetMaterialFloat(key MatKey, typ TextureType, textureIndex int) (float32, Return) {
 	var f float32
-	ret := C.aiGetMaterialFloatArray((*C.struct_aiMaterial)(m), key.constString(), C.uint(typ), C.uint(textureIndex), (*C.ai_real)(&f), nil)
+	ret := C.aiGetMaterialFloatArray((*C.struct_aiMaterial)(m), key.constString(), C.uint(typ), C.uint(textureIndex), (*C.float)(&f), nil)
 	return f, Return(ret)
 }
 
@@ -272,7 +272,7 @@ func (m *Material) GetMaterialTexture(typ TextureType, textureIndex int) (string
 	var path C.struct_aiString
 	var mapping C.enum_aiTextureMapping
 	var uvindex C.uint
-	var blend C.ai_real
+	var blend C.float
 	var op C.enum_aiTextureOp
 	var mapmode C.enum_aiTextureMapMode
 	var flags C.uint

@@ -204,7 +204,7 @@ func (p *PropertyStore) SetPropertyInteger(name string, value int) {
 func (p *PropertyStore) SetPropertyFloat(name string, value float32) {
 	szName := C.CString(name)
 	defer C.free(unsafe.Pointer(szName))
-	C.aiSetImportPropertyFloat((*C.struct_aiPropertyStore)(p), szName, C.ai_real(value))
+	C.aiSetImportPropertyFloat((*C.struct_aiPropertyStore)(p), szName, C.float(value))
 }
 
 func (p *PropertyStore) SetPropertyString(name string, value string) {
