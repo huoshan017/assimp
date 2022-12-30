@@ -46,19 +46,19 @@ const (
 type TextureType C.enum_aiTextureType
 
 const (
-	TextureMapping_None         TextureMapping = C.aiTextureType_NONE
-	TextureMapping_Diffuse      TextureMapping = C.aiTextureType_DIFFUSE
-	TextureMapping_Specular     TextureMapping = C.aiTextureType_SPECULAR
-	TextureMapping_Ambient      TextureMapping = C.aiTextureType_AMBIENT
-	TextureMapping_Emissive     TextureMapping = C.aiTextureType_EMISSIVE
-	TextureMapping_Height       TextureMapping = C.aiTextureType_HEIGHT
-	TextureMapping_Normals      TextureMapping = C.aiTextureType_NORMALS
-	TextureMapping_Shininess    TextureMapping = C.aiTextureType_SHININESS
-	TextureMapping_Opacity      TextureMapping = C.aiTextureType_OPACITY
-	TextureMapping_Displacement TextureMapping = C.aiTextureType_DISPLACEMENT
-	TextureMapping_Lightmap     TextureMapping = C.aiTextureType_LIGHTMAP
-	TextureMapping_Reflection   TextureMapping = C.aiTextureType_REFLECTION
-	TextureMapping_Unknown      TextureMapping = C.aiTextureType_UNKNOWN
+	TextureType_None         TextureType = C.aiTextureType_NONE
+	TextureType_Diffuse      TextureType = C.aiTextureType_DIFFUSE
+	TextureType_Specular     TextureType = C.aiTextureType_SPECULAR
+	TextureType_Ambient      TextureType = C.aiTextureType_AMBIENT
+	TextureType_Emissive     TextureType = C.aiTextureType_EMISSIVE
+	TextureType_Height       TextureType = C.aiTextureType_HEIGHT
+	TextureType_Normals      TextureType = C.aiTextureType_NORMALS
+	TextureType_Shininess    TextureType = C.aiTextureType_SHININESS
+	TextureType_Opacity      TextureType = C.aiTextureType_OPACITY
+	TextureType_Displacement TextureType = C.aiTextureType_DISPLACEMENT
+	TextureType_Lightmap     TextureType = C.aiTextureType_LIGHTMAP
+	TextureType_Reflection   TextureType = C.aiTextureType_REFLECTION
+	TextureType_Unknown      TextureType = C.aiTextureType_UNKNOWN
 )
 
 const TextureTypeMax = C.AI_TEXTURE_TYPE_MAX
