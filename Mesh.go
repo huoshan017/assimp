@@ -30,7 +30,7 @@ func (f *Face) IndicesPtr() *uint32 {
 }
 
 func (f *Face) Index(i int) uint32 {
-	return f.mIndices[i]
+	return *(*uint32)((unsafe.Pointer)((uintptr)(unsafe.Pointer(f.mIndices)) + unsafe.Sizeof(i)))
 }
 
 func (f *Face) CopyIndices() []uint32 {

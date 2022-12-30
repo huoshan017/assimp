@@ -11,46 +11,46 @@ import (
 
 type Node C.struct_aiNode
 
-func (this *Node) Name() string {
-	return C.GoString(&this.mName.data[0])
+func (n *Node) Name() string {
+	return C.GoString(&n.mName.data[0])
 }
 
-func (this *Node) Transformation() Matrix4x4 {
-	return Matrix4x4(this.mTransformation)
+func (n *Node) Transformation() Matrix4x4 {
+	return Matrix4x4(n.mTransformation)
 }
 
-func (this *Node) Parent() *Node {
-	return (*Node)(this.mParent)
+func (n *Node) Parent() *Node {
+	return (*Node)(n.mParent)
 }
 
-func (this *Node) NumChildren() int {
-	return int(this.mNumChildren)
+func (n *Node) NumChildren() int {
+	return int(n.mNumChildren)
 }
 
-func (this *Node) Children() []*Node {
-	if this.mNumChildren > 0 && this.mChildren != nil {
+func (n *Node) Children() []*Node {
+	if n.mNumChildren > 0 && n.mChildren != nil {
 		var result []*Node
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumChildren)
-		header.Len = int(this.mNumChildren)
-		header.Data = uintptr(unsafe.Pointer(this.mChildren))
+		header.Cap = int(n.mNumChildren)
+		header.Len = int(n.mNumChildren)
+		header.Data = uintptr(unsafe.Pointer(n.mChildren))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Node) NumMeshes() int {
-	return int(this.mNumMeshes)
+func (n *Node) NumMeshes() int {
+	return int(n.mNumMeshes)
 }
 
-func (this *Node) Meshes() []int32 {
-	if this.mNumMeshes > 0 && this.mMeshes != nil {
+func (n *Node) Meshes() []int32 {
+	if n.mNumMeshes > 0 && n.mMeshes != nil {
 		var result []int32
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumMeshes)
-		header.Len = int(this.mNumMeshes)
-		header.Data = uintptr(unsafe.Pointer(this.mMeshes))
+		header.Cap = int(n.mNumMeshes)
+		header.Len = int(n.mNumMeshes)
+		header.Data = uintptr(unsafe.Pointer(n.mMeshes))
 		return result
 	} else {
 		return nil
@@ -67,110 +67,110 @@ const (
 
 type Scene C.struct_aiScene
 
-func (this *Scene) Flags() uint {
-	return uint(this.mFlags)
+func (s *Scene) Flags() uint {
+	return uint(s.mFlags)
 }
 
-func (this *Scene) RootNode() *Node {
-	return (*Node)(this.mRootNode)
+func (s *Scene) RootNode() *Node {
+	return (*Node)(s.mRootNode)
 }
 
-func (this *Scene) NumMeshes() int {
-	return int(this.mNumMeshes)
+func (s *Scene) NumMeshes() int {
+	return int(s.mNumMeshes)
 }
 
-func (this *Scene) Meshes() []*Mesh {
-	if this.mNumMeshes > 0 && this.mMeshes != nil {
+func (s *Scene) Meshes() []*Mesh {
+	if s.mNumMeshes > 0 && s.mMeshes != nil {
 		var result []*Mesh
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumMeshes)
-		header.Len = int(this.mNumMeshes)
-		header.Data = uintptr(unsafe.Pointer(this.mMeshes))
+		header.Cap = int(s.mNumMeshes)
+		header.Len = int(s.mNumMeshes)
+		header.Data = uintptr(unsafe.Pointer(s.mMeshes))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Scene) NumMaterials() int {
-	return int(this.mNumMaterials)
+func (s *Scene) NumMaterials() int {
+	return int(s.mNumMaterials)
 }
 
-func (this *Scene) Materials() []*Material {
-	if this.mNumMaterials > 0 && this.mMaterials != nil {
+func (s *Scene) Materials() []*Material {
+	if s.mNumMaterials > 0 && s.mMaterials != nil {
 		var result []*Material
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumMaterials)
-		header.Len = int(this.mNumMaterials)
-		header.Data = uintptr(unsafe.Pointer(this.mMaterials))
+		header.Cap = int(s.mNumMaterials)
+		header.Len = int(s.mNumMaterials)
+		header.Data = uintptr(unsafe.Pointer(s.mMaterials))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Scene) NumAnimations() int {
-	return int(this.mNumAnimations)
+func (s *Scene) NumAnimations() int {
+	return int(s.mNumAnimations)
 }
 
-func (this *Scene) Animations() []*Animation {
-	if this.mNumAnimations > 0 && this.mAnimations != nil {
+func (s *Scene) Animations() []*Animation {
+	if s.mNumAnimations > 0 && s.mAnimations != nil {
 		var result []*Animation
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumAnimations)
-		header.Len = int(this.mNumAnimations)
-		header.Data = uintptr(unsafe.Pointer(this.mAnimations))
+		header.Cap = int(s.mNumAnimations)
+		header.Len = int(s.mNumAnimations)
+		header.Data = uintptr(unsafe.Pointer(s.mAnimations))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Scene) NumTextures() int {
-	return int(this.mNumTextures)
+func (s *Scene) NumTextures() int {
+	return int(s.mNumTextures)
 }
 
-func (this *Scene) Textures() []*Texture {
-	if this.mNumTextures > 0 && this.mTextures != nil {
+func (s *Scene) Textures() []*Texture {
+	if s.mNumTextures > 0 && s.mTextures != nil {
 		var result []*Texture
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumTextures)
-		header.Len = int(this.mNumTextures)
-		header.Data = uintptr(unsafe.Pointer(this.mTextures))
+		header.Cap = int(s.mNumTextures)
+		header.Len = int(s.mNumTextures)
+		header.Data = uintptr(unsafe.Pointer(s.mTextures))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Scene) NumLights() int {
-	return int(this.mNumLights)
+func (s *Scene) NumLights() int {
+	return int(s.mNumLights)
 }
 
-func (this *Scene) Lights() []*Light {
-	if this.mNumLights > 0 && this.mLights != nil {
+func (s *Scene) Lights() []*Light {
+	if s.mNumLights > 0 && s.mLights != nil {
 		var result []*Light
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumLights)
-		header.Len = int(this.mNumLights)
-		header.Data = uintptr(unsafe.Pointer(this.mLights))
+		header.Cap = int(s.mNumLights)
+		header.Len = int(s.mNumLights)
+		header.Data = uintptr(unsafe.Pointer(s.mLights))
 		return result
 	} else {
 		return nil
 	}
 }
 
-func (this *Scene) NumCameras() int {
-	return int(this.mNumCameras)
+func (s *Scene) NumCameras() int {
+	return int(s.mNumCameras)
 }
 
-func (this *Scene) Cameras() []*Camera {
-	if this.mNumCameras > 0 && this.mCameras != nil {
+func (s *Scene) Cameras() []*Camera {
+	if s.mNumCameras > 0 && s.mCameras != nil {
 		var result []*Camera
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&result))
-		header.Cap = int(this.mNumCameras)
-		header.Len = int(this.mNumCameras)
-		header.Data = uintptr(unsafe.Pointer(this.mCameras))
+		header.Cap = int(s.mNumCameras)
+		header.Len = int(s.mNumCameras)
+		header.Data = uintptr(unsafe.Pointer(s.mCameras))
 		return result
 	} else {
 		return nil

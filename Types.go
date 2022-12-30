@@ -159,17 +159,17 @@ func (c *Color4) Values() [4]float32 {
 
 func (m *Matrix3x3) Values() [3][3]float32 {
 	return [3][3]float32{
-		[3]float32{float32(m.a1), float32(m.a2), float32(m.a3)},
-		[3]float32{float32(m.b1), float32(m.b2), float32(m.b3)},
-		[3]float32{float32(m.c1), float32(m.c2), float32(m.c3)},
+		{float32(m.a1), float32(m.a2), float32(m.a3)},
+		{float32(m.b1), float32(m.b2), float32(m.b3)},
+		{float32(m.c1), float32(m.c2), float32(m.c3)},
 	}
 }
 
 func (m *Matrix4x4) Values() [4][4]float32 {
 	return [4][4]float32{
-		[4]float32{float32(m.a1), float32(m.a2), float32(m.a3), float32(m.a4)},
-		[4]float32{float32(m.b1), float32(m.b2), float32(m.b3), float32(m.b4)},
-		[4]float32{float32(m.c1), float32(m.c2), float32(m.c3), float32(m.c4)},
-		[4]float32{float32(m.d1), float32(m.d2), float32(m.d3), float32(m.d4)},
+		{float32(m.a1), float32(m.a2), float32(m.a3), float32(m.a4)},
+		{float32(m.b1), float32(m.b2), float32(m.b3), float32(m.b4)},
+		{float32(m.c1), float32(m.c2), float32(m.c3), float32(m.c4)},
+		{float32(m.d1), float32(m.d2), float32(m.d3), float32(m.d4)},
 	}
 }
